@@ -10,6 +10,7 @@ const mainHandlers = require('./lambda/main');
 const checkHandlers = require("./lambda/checkInOut");
 const moodHandlers = require("./lambda/moods");
 const statusHandlers = require("./lambda/status");
+const creatingHandlers = require("./lambda/createRole");
 
 //handler
 exports.handler = function(event, context, callback) {
@@ -22,6 +23,7 @@ exports.handler = function(event, context, callback) {
         host: config.dbURL,
         port: config.dbPort
     });
-    alexa.registerHandlers(mainHandlers, checkHandlers, moodHandlers, statusHandlers);
+    context.callbackWaitsForEmptyEventLoop = false;
+    alexa.registerHandlers(mainHandlers, checkHandlers, moodHandlers, statusHandlers, creatingHandlers);
     alexa.execute();
 };

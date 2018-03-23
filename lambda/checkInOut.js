@@ -1,3 +1,4 @@
+
 'use strict';
 
 
@@ -24,9 +25,9 @@ const checkHandlers = {
         checkInDateTime = new Date(utc + (3600000*offset));
         const checkInDateString = checkInDateTime.toString().slice(0,21);  //only first 21 characters of date
         const cardText = "Checked in at:\n"+ checkInDateString;
-        
+
         const speechOutput = CHECK_IN_PRE + checkInDateString;
-        this.emit(':tellWithCard', speechOutput, cardTitle, cardText); 
+        this.emit(':tellWithCard', speechOutput, cardTitle, cardText);
     },
 
     'DoCheckOut': function () {
@@ -36,9 +37,9 @@ const checkHandlers = {
         checkOutDateTime = new Date(utc + (3600000*offset));
         const checkOutDateString = checkOutDateTime.toString().slice(0,21);  //only first 21 characters of date
         const cardText = "Checked out at:\n"+checkOutDateString;
-        
+
         const speechOutput = CHECK_OUT_PRE + checkOutDateString;
-        this.emit(':tellWithCard', speechOutput, cardTitle, cardText); 
+        this.emit(':tellWithCard', speechOutput, cardTitle, cardText);
     }
 };
 
