@@ -88,8 +88,7 @@ const creatingHandlers = {
             .then(result => {
                 console.log(testRes);
                 if(findID(result, userID)) {
-                    self.response.speak('Senior setup has been run already on this device. The caregiver code is '+token.split('').join('. '))
-                    self.emit(':responseReady')
+                    self.emit(':tellWithCard', 'Senior setup already been ran on this device. Please look at the alexa app to see your caregiver code.', 'Ccode Value', "This is your the caregiver code: "+token.split('').join('. '));
                 } else {
                     while(testRes){
                         if(findCC(result, token)){
@@ -101,8 +100,7 @@ const creatingHandlers = {
                                 .then(result => {
                                     client.release();
                                     console.log("Token success: "+ token);
-                                    self.response.speak('Senior setup has been completed. Please record this value. "'+token.split('').join('. ')+'", that is your caregiver code.');
-                                    self.emit(':responseReady');
+                                    self.emit(':tellWithCard', 'Senior setup has been completed. Please look at the alexa app to see your caregiver code.', 'Ccode Value', "This is your the caregiver code: "+token.split('').join('. '));
                                     testRes = false;
                                 }).catch(err => {
                                     console.log(err.stack);
